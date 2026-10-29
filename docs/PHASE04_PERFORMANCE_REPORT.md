@@ -1,7 +1,7 @@
 **Phase:** 04 — PostgreSQL Administration & Performance Engineering
 **Status:** In Progress
 **Stage 01:** PostgreSQL Administration Baseline — Completed
-**Stage 02:** Baseline Performance Benchmarking — Pending
+**Stage 02:** Baseline Performance Benchmarking — In Progress (Q01 completed)
 **Stage 03:** Index Engineering — Pending
 **Stage 04:** Performance Comparison — Pending
 
@@ -12,7 +12,7 @@
 **Database:** `rushmore_db`  
 **Platform:** Azure Database for PostgreSQL  
 **PostgreSQL Version:** 18.6  
-**Status:** Stage 01 completed; performance benchmarking pending
+**Status:** Stage 01 completed; Stage 02 in progress (Q01 baseline completed)
 
 ---
 
@@ -242,7 +242,7 @@ The same query parameters, database environment, and measurement procedure will 
 
 | Query | Workload | Baseline |
 |---|---|---|
-| Q01 | Customer order history | Pending |
+| Q01 | Customer order history | Completed — median 0.103 ms |
 | Q02 | Sales aggregation | Pending |
 | Q03 | Order line-item lookup | Pending |
 
@@ -250,7 +250,7 @@ The same query parameters, database environment, and measurement procedure will 
 
 | Query | Run 1 | Run 2 | Run 3 | Run 4 | Run 5 | Median (ms) |
 |---|---:|---:|---:|---:|---:|---:|
-| Q01 | — | — | — | — | — | — |
+| Q01 | 0.103 | 0.160 | 0.074 | 0.104 | 0.097 | **0.103** |
 | Q02 | — | — | — | — | — | — |
 | Q03 | — | — | — | — | — | — |
 
@@ -368,7 +368,7 @@ They should not be generalized to production-scale performance without additiona
 
 **Stage 01:** Administration baseline completed.
 
-**Stage 02:** Benchmark measurements pending.
+**Stage 02:** In progress — Q01 baseline completed (median 0.103 ms); Q02 and Q03 pending.
 
 **Stage 03:** Index engineering pending.
 
