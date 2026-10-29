@@ -94,3 +94,21 @@ The project is ready to proceed to Phase 04: PostgreSQL Administration, Indexing
 
 ### Transaction Integrity
 ![Transaction Integrity](../evidence/phase03/05_transaction_integrity.png)
+
+
+## 9. Execution Evidence
+
+### Python/Faker Pipeline
+![Pipeline Execution](../RushMore-Screenshots/pipeline-6.png)
+
+### PostgreSQL Row Counts
+![Database Row Counts](../RushMore-Screenshots/rush-8.png)
+
+### Foreign Key Integrity
+![Foreign Key Validation](../RushMore-Screenshots/rush-9.png)
+
+### Data Quality Validation
+![Data Quality Checks](../RushMore-Screenshots/rush-10.png)
+
+### Transaction Integrity
+![Transaction Integrity](../RushMore-Screenshots/pg-2.png)
