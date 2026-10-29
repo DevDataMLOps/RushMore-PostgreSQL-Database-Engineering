@@ -141,7 +141,78 @@ The audit establishes a baseline for database configuration, privileges, connect
 
 ## 3. Stage 02 — Baseline Query Performance
 
-**Status: Pending execution**
+### Stage 02 — Baseline Performance Benchmarking
+
+**Status:** In Progress  
+**Database:** `rushmore_db`  
+**Platform:** Azure Database for PostgreSQL 18.6  
+**Benchmark tool:** pgAdmin 4 / `EXPLAIN (ANALYZE, BUFFERS)`  
+**Optimization status:** Pre-optimization baseline
+
+#### Q01 — Customer Order History
+
+**Objective:** Measure customer order-history retrieval performance before introducing additional indexes.
+
+**Benchmark methodology:**
+
+- Execute the same SQL query five times under similar conditions.
+- Record PostgreSQL execution time and planning time.
+- Inspect execution-plan operators and buffer activity.
+- Use median execution time as the primary comparison metric.
+- Preserve the original baseline before implementing new indexes.
+
+**Baseline measurements**
+
+| Run | Execution Time (ms) | Planning Time (ms) |
+|---|---:|---:|
+| 1 | 0.103 | 0.339 |
+| 2 | 0.160 | 0.181 |
+| 3 | 0.074 | 0.108 |
+| 4 | 0.104 | 0.110 |
+| 5 | 0.097 | 0.138 |
+| **Median** | **0.103** | **0.138** |
+| **Mean** | **0.108** | **0.175** |
+
+#### Execution Plan Observations
+
+The baseline execution plan demonstrates:
+
+- **Access method:** Bitmap Index Scan with Bitmap Heap Scan.
+- **Existing index:** `idx_orders_customer_id`.
+- **Index condition:** `customer_id = 100`.
+- **Index searches:** 1.
+- **Matching rows:** 4 in the observed executions.
+- **Sorting:** `order_timestamp DESC` using quicksort.
+- **Index scan buffer hits:** 2 in the captured execution plan.
+- **Run 5 execution time:** 0.097 ms.
+
+**Interpretation:**
+
+PostgreSQL already uses an existing index to locate the customer's orders. The query also performs a sorting operation to return the most recent orders first.
+
+The existing index provides an effective starting point. Any proposed composite index must demonstrate measurable improvements in execution time, execution-plan behavior, or buffer usage.
+
+Because the query already executes in approximately 0.1 milliseconds, additional indexes may provide limited benefits and introduce write or storage overhead.
+
+#### Baseline Summary
+
+| Metric | Baseline |
+|---|---|
+| Benchmark executions | 5 |
+| Median execution time | 0.103 ms |
+| Mean execution time | 0.108 ms |
+| Fastest execution | 0.074 ms |
+| Slowest execution | 0.160 ms |
+| Existing index | `idx_orders_customer_id` |
+| Optimization status | Not yet performed |
+
+**Conclusion:**
+
+Q01 baseline benchmarking has been completed successfully. These measurements represent the **pre-optimization baseline** and will serve as the reference for Stage 04 performance comparisons.
+
+No performance improvement or speedup is claimed at this stage.
+
+**Next:** Complete Q02 and Q03 baseline measurements before implementing and evaluating proposed indexes.
 
 ### 3.1 Objective
 
@@ -326,3 +397,6 @@ The final report will summarize measured performance improvements, index effecti
 ### Index and Maintenance Audit
 ![Index and Maintenance Audit](evidence/phase04/admin-6.png)
 
+#### Q01 — Baseline Execution Evidence
+
+![Q01 Customer Order History Baseline](evidence/phase04/baseline-q01-run5.png)
