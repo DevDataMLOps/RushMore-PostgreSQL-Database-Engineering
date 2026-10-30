@@ -638,3 +638,87 @@ No additional index is recommended for Q03 based on the current evidence.
 **Evidence:** `docs/evidence/phase04/comparison-q03-run1.png` through `comparison-q03-run5.png`.
 
 **Final Status:** Q03 index evaluation completed. Existing indexing strategy retained.
+
+# Phase 04 — Final Performance Engineering Review
+
+**Project:** RushMore PostgreSQL Database Engineering  
+**Database:** `rushmore_db`  
+**Platform:** Azure Database for PostgreSQL 18.6  
+**Benchmark method:** `EXPLAIN (ANALYZE, BUFFERS)`  
+**Review status:** Benchmark investigations completed; final evidence and reproducibility checks pending.
+
+## Executive Summary
+
+Phase 04 evaluated database administration, index utilization, query execution performance, and optimization trade-offs across three representative SQL workloads.
+
+The database contained 126,085 synthetic records distributed across six relational tables.
+
+The investigation established that the appropriate indexing strategy depends on workload selectivity, data access patterns, execution plans, and measured performance.
+
+## Consolidated Performance Results
+
+| Query | Reference median | Comparison median | Result |
+|---|---:|---:|---|
+| Q01 — Customer Order History | 0.103 ms | 0.079 ms | 23.30% execution-time reduction |
+| Q02 — Sales Aggregation | 19.963 ms | 25.687 ms | Forced index scan 28.7% slower |
+| Q03 — Order Line-Item Lookup | 0.062 ms (indexed) | 6.332 ms (sequential) | Indexed lookup approximately 102.1× faster |
+
+All figures represent PostgreSQL execution times, excluding client-side round-trip and pgAdmin interface overhead.
+
+## Q01 — Engineering Decision
+
+The composite index `idx_orders_customer_timestamp` was evaluated for customer order-history retrieval.
+
+The five-run median execution time decreased from 0.103 ms to 0.079 ms.
+
+PostgreSQL used a bitmap index scan followed by an explicit sort, indicating that the composite index did not eliminate all sorting work in the observed execution plan.
+
+**Decision:** Retain the composite index provisionally, subject to representative workload validation and assessment of index maintenance overhead.
+
+## Q02 — Engineering Decision
+
+The sales aggregation processed 30,000 order records.
+
+The normal sequential-scan strategy achieved a median execution time of 19.963 ms in the additional verification series, compared with 25.687 ms for the forced-index comparison.
+
+An earlier baseline series recorded a median of 18.918 ms and remains documented separately.
+
+**Decision:** Retain PostgreSQL's default access strategy. No additional index is justified by the current evidence.
+
+## Q03 — Engineering Decision
+
+The order line-item lookup used the existing index `idx_order_items_order_id` to retrieve three matching records.
+
+The indexed baseline median was 0.062 ms, compared with 6.332 ms when a sequential scan was forced.
+
+The sequential scan examined approximately 90,000 records and reported 574 shared buffer hits, compared with three shared buffer hits for the indexed lookup.
+
+**Decision:** Retain the existing B-tree index. Do not create a redundant additional index.
+
+## Engineering Conclusions
+
+1. Existing indexes should be audited before proposing new indexes.
+2. Sequential scans can outperform index scans for full-table analytical workloads.
+3. Selective lookups can benefit substantially from existing B-tree indexes.
+4. Query performance should be assessed using execution plans, buffer statistics, and repeated measurements.
+5. A measured improvement in a small synthetic benchmark does not establish production-scale performance benefits.
+
+## Limitations
+
+The benchmarks used synthetic data, limited query parameters, and a controlled Azure PostgreSQL environment.
+
+Some comparisons deliberately modified PostgreSQL planner settings. These experiments demonstrate alternative access-path costs, not necessarily production planner behavior.
+
+Cache effects, concurrent workloads, data growth, and write amplification were not comprehensively evaluated.
+
+## Final Verification Requirements
+
+- Reconcile outdated stage statuses throughout the report.
+- Confirm all referenced evidence files exist and open correctly.
+- Add Q02 and Q03 comparison procedures to the reproducible SQL artifacts.
+- Confirm the Q01 composite index exists in the target database.
+- Verify planner settings are restored to their defaults.
+- Reconcile the index inventory and document any additional storage overhead.
+- Commit and push the final review after all checks pass.
+
+**Final assessment:** The Phase 04 benchmark investigations demonstrate evidence-based PostgreSQL performance engineering. Final phase closure remains conditional on documentation, evidence, and reproducibility verification.

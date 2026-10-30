@@ -38,3 +38,21 @@ SELECT
     unit_price
 FROM order_items
 WHERE order_id = 100;
+
+BEGIN;
+
+SET LOCAL enable_indexscan = off;
+SET LOCAL enable_bitmapscan = off;
+SET LOCAL enable_indexonlyscan = off;
+
+EXPLAIN (ANALYZE, BUFFERS)
+SELECT
+    order_id,
+    item_id,
+    quantity,
+    unit_price
+FROM public.order_items
+WHERE order_id = 100;
+
+ROLLBACK;
+
