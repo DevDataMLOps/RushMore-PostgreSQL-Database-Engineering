@@ -420,6 +420,55 @@ The results demonstrate a measurable improvement in this five-run benchmark. How
 
 **Benchmark Status:** Q01 five-run post-optimization comparison completed.
 
+## Q02 — Index Evaluation and Engineering Decision
+
+### Benchmark Objective
+
+Evaluate whether using the existing customer index improves performance for a full-table customer sales aggregation.
+
+### Methodology
+
+Five baseline executions were compared against five executions with sequential scans discouraged using `SET LOCAL enable_seqscan = off`.
+
+PostgreSQL `EXPLAIN (ANALYZE, BUFFERS)` execution times were recorded. The forced-index test is diagnostic and does not represent PostgreSQL's normal planner behavior.
+
+### Performance Results
+
+| Metric | Baseline | Forced Index |
+|---|---:|---:|
+| Benchmark executions | 5 | 5 |
+| Median execution time | 19.963 ms | 25.687 ms |
+| Scan strategy | Sequential Scan | Index Scan |
+| Index evaluated | — | `idx_orders_customer_id` |
+| Median latency difference | — | +5.724 ms |
+| Relative slowdown | — | 28.7% |
+
+### Engineering Findings
+
+- Q02 processes all 30,000 orders to calculate customer-level sales totals.
+- The baseline plan uses a sequential scan.
+- The forced-index plan uses `idx_orders_customer_id`.
+- Index-based access did not improve measured execution time.
+- The forced-index execution required approximately 29,733 shared buffer hits in the final run.
+- The experiment provides no evidence justifying an additional index for Q02.
+
+### Engineering Decision
+
+**Retain the existing indexing strategy. Do not introduce an additional Q02 index at this stage.**
+
+PostgreSQL's default sequential-scan plan performed better in this benchmark. Further optimization should be justified by representative production workloads, larger datasets, and repeatable measurements.
+
+### Evidence
+
+- `evidence/phase04/baseline-q02-run5.png`
+- `evidence/phase04/comparison-q02-run1.png`
+- `evidence/phase04/comparison-q02-run2.png`
+- `evidence/phase04/comparison-q02-run3.png`
+- `evidence/phase04/comparison-q02-run4.png`
+- `evidence/phase04/comparison-q02-run5.png`
+
+**Stage 03 Status:** Q02 index evaluation completed.
+
 ### Q02 — Sales Aggregation: Pre-Optimization Baseline
 
 **Database:** `rushmore_db`  
@@ -460,6 +509,47 @@ The sequential scan is not inherently inefficient for this aggregation workload.
 **Q02 pre-optimization baseline: Completed.**
 
 Post-optimization results remain pending. No performance improvement is claimed at this stage.
+
+#### Q02 — Additional Baseline Verification (Five-Run Series)
+
+**Database:** `rushmore_db`  
+**Platform:** Azure Database for PostgreSQL  
+**Benchmark method:** `EXPLAIN (ANALYZE, BUFFERS)`  
+**Status:** Completed — additional baseline series
+
+| Run | Execution Time (ms) | Planning Time (ms) |
+|---|---:|---:|
+| 1 | 22.333 | 0.210 |
+| 2 | 18.108 | 0.117 |
+| 3 | 19.368 | 0.122 |
+| 4 | 19.963 | 0.118 |
+| 5 | 23.188 | 0.118 |
+| **Median** | **19.963** | **0.118** |
+| **Mean** | **20.592** | **0.137** |
+
+**Execution-Plan Findings**
+
+- PostgreSQL selected a sequential scan on `public.orders`.
+- All 30,000 orders were processed.
+- The sequential scan recorded 221 shared buffer hits.
+- The aggregation plan reported approximately 2,705 kB of memory usage.
+- The workload aggregates sales by customer and orders the results by total sales.
+
+**Engineering Interpretation**
+
+The sequential scan is a reasonable execution strategy for an unfiltered aggregation over the entire orders table.
+
+A conventional index on `customer_id` alone does not eliminate the need to read `total_amount` for every order.
+
+The additional five-run baseline median was **19.963 ms**. An earlier five-run series recorded a median of **18.918 ms**. Both are retained as separate observations until differences in execution conditions and index state are reconciled.
+
+No additional-index performance improvement has been demonstrated.
+
+**Evidence**
+
+![Q02 Baseline Run 5](evidence/phase04/baseline-q02-run5.png)
+
+**Next:** Evaluate the existing execution plan and test whether an alternative access path produces a repeatable improvement without introducing unjustified index overhead.
 
 ### Q03 — Order Line-Item Lookup: Pre-Optimization Baseline
 
