@@ -597,3 +597,44 @@ Post-optimization performance comparison remains pending. No performance improve
 #### Evidence
 
 ![Q03 Baseline Run 5](evidence/phase04/baseline-q03-run5.png)
+
+### Q03 — Order Line-Item Lookup: Final Engineering Decision
+
+**Benchmark Status:** Completed — 5/5 sequential-scan comparison runs.
+
+**Query:** Retrieve order line items where `order_id = 100`.
+
+**Existing Index:** `idx_order_items_order_id`
+
+**Sequential-Scan Execution Times (ms):**
+
+| Run | Execution Time |
+|---|---:|
+| 1 | 6.345 |
+| 2 | 6.332 |
+| 3 | 13.467 |
+| 4 | 6.042 |
+| 5 | 5.835 |
+
+**Median:** 6.332 ms  
+**Mean:** 7.604 ms
+
+**Execution-Plan Findings:**
+
+- Sequential scan examined approximately 90,000 rows.
+- Three rows matched the lookup predicate.
+- Sequential-scan buffer usage: 574 shared hits.
+- Indexed lookup buffer usage: 3 shared hits.
+- Indexed execution times observed in earlier evidence: approximately 0.032–0.057 ms.
+
+**Engineering Decision: RETAIN EXISTING INDEX**
+
+The existing B-tree index provides efficient access for selective order line-item lookups. The sequential-scan comparison demonstrates substantially greater execution time and buffer activity.
+
+No additional index is recommended for Q03 based on the current evidence.
+
+**Limitations:** The benchmark uses a single lookup value, a relatively small dataset, and a controlled planner configuration. Results should not be generalized to production without representative workload testing.
+
+**Evidence:** `docs/evidence/phase04/comparison-q03-run1.png` through `comparison-q03-run5.png`.
+
+**Final Status:** Q03 index evaluation completed. Existing indexing strategy retained.
