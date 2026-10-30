@@ -441,3 +441,50 @@ The sequential scan is not inherently inefficient for this aggregation workload.
 **Q02 pre-optimization baseline: Completed.**
 
 Post-optimization results remain pending. No performance improvement is claimed at this stage.
+
+### Q03 — Order Line-Item Lookup: Pre-Optimization Baseline
+
+**Status:** Completed — 5/5 benchmark runs
+
+**Database:** `rushmore_db`  
+**Platform:** Azure Database for PostgreSQL  
+**Methodology:** Five executions using `EXPLAIN (ANALYZE, BUFFERS)` before introducing new optimization indexes.
+
+#### Execution Time Results
+
+| Run | Execution Time (ms) |
+|---|---:|
+| 1 | 1.214 |
+| 2 | 0.067 |
+| 3 | 0.047 |
+| 4 | 0.062 |
+| 5 | 0.050 |
+| **Median** | **0.062** |
+| **Mean** | **0.288** |
+
+#### Execution Plan Observations
+
+- PostgreSQL used an Index Scan on `order_items`.
+- Existing index: `idx_order_items_order_id`.
+- Index condition: `order_id = 100`.
+- Three matching rows were returned.
+- Run 5 recorded three shared buffer hits and one index search.
+- The first execution was substantially slower than subsequent executions.
+
+#### Engineering Interpretation
+
+The existing index supports efficient retrieval of order line items by `order_id`. The five-run median execution time was 0.062 ms.
+
+The first execution was substantially slower, potentially reflecting warm-up effects or other environmental variability. This cause has not been independently verified.
+
+Additional indexing should not be assumed beneficial without a measured comparison.
+
+#### Benchmark Status
+
+**Q03 pre-optimization baseline: Completed.**
+
+Post-optimization performance comparison remains pending. No performance improvement is claimed at this stage.
+
+#### Evidence
+
+![Q03 Baseline Run 5](evidence/phase04/baseline-q03-run5.png)
