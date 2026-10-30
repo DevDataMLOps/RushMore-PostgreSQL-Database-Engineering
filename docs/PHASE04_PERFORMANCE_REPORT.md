@@ -401,6 +401,25 @@ The final report will summarize measured performance improvements, index effecti
 
 ![Q01 Customer Order History Baseline](evidence/phase04/baseline-6.png)
 
+### Q01 — Post-Optimization Performance Comparison
+
+| Metric | Pre-Optimization | Post-Optimization |
+|---|---:|---:|
+| Benchmark executions | 5 | 5 |
+| Median execution time | 0.103 ms | 0.079 ms |
+| Median execution-time reduction | — | 23.30% |
+| Relative speedup | — | 1.30× |
+
+**Engineering Findings**
+
+The post-optimization benchmark recorded a 23.30% reduction in median execution time compared with the original baseline.
+
+PostgreSQL selected the composite index `idx_orders_customer_timestamp` through a Bitmap Index Scan, followed by an explicit sort on `order_timestamp DESC`.
+
+The results demonstrate a measurable improvement in this five-run benchmark. However, the small execution times and limited workload size mean the improvement should be interpreted as preliminary rather than proof of production-scale performance gains.
+
+**Benchmark Status:** Q01 five-run post-optimization comparison completed.
+
 ### Q02 — Sales Aggregation: Pre-Optimization Baseline
 
 **Database:** `rushmore_db`  
