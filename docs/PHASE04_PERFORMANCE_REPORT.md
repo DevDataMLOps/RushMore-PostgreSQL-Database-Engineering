@@ -400,3 +400,44 @@ The final report will summarize measured performance improvements, index effecti
 #### Q01 — Baseline Execution Evidence
 
 ![Q01 Customer Order History Baseline](evidence/phase04/baseline-6.png)
+
+### Q02 — Sales Aggregation: Pre-Optimization Baseline
+
+**Database:** `rushmore_db`  
+**Platform:** Azure Database for PostgreSQL  
+**Benchmark method:** Five executions using `EXPLAIN (ANALYZE, BUFFERS)`  
+**Optimization status:** No new Phase 04 indexes applied
+
+#### Execution Time Results
+
+| Run | Execution Time (ms) |
+|---|---:|
+| 1 | 229.273 |
+| 2 | 18.918 |
+| 3 | 18.616 |
+| 4 | 19.842 |
+| 5 | 18.773 |
+| **Median** | **18.918** |
+
+#### Execution-Plan Observations
+
+- PostgreSQL used a sequential scan on the `orders` table.
+- The scan processed approximately 30,000 rows.
+- Run 5 recorded 221 shared buffer hits at the sequential scan node.
+- Hash aggregation memory usage was approximately 2,705 kB.
+- Run 5 planning time was 0.131 ms.
+- Run 5 execution time was 18.773 ms.
+
+#### Engineering Interpretation
+
+The first execution was substantially slower than subsequent executions. The cause has not been established, although cache warming and execution variability are possible explanations.
+
+The five-run median of **18.918 ms** is retained as the official pre-optimization baseline.
+
+The sequential scan is not inherently inefficient for this aggregation workload. Index engineering must demonstrate a measurable improvement rather than assume an index will be beneficial.
+
+#### Benchmark Status
+
+**Q02 pre-optimization baseline: Completed.**
+
+Post-optimization results remain pending. No performance improvement is claimed at this stage.
