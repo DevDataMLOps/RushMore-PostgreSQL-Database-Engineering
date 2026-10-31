@@ -713,3 +713,25 @@ Cache effects, concurrent workloads, data growth, and write amplification were n
 - Commit and push the final review after all checks pass.
 
 **Final assessment (evidence audit, 2026-10-30): BLOCKED for phase closure.** Engineering decisions remain provisional until missing measurement sources, catalog verification, and reproducibility gaps in the linked audit are resolved.
+
+## PostgreSQL Index Integrity Verification
+
+A PostgreSQL catalog inspection was performed against
+the Azure-hosted `rushmore_db` database to verify
+index integrity and readiness.
+
+**Verification results:**
+
+- Seven indexes were identified across `orders` and `order_items`.
+- All seven indexes returned `is_valid = true`.
+- All seven indexes returned `is_ready = true`.
+- Index definitions and storage sizes were inspected.
+
+### Index Health Evidence
+
+![PostgreSQL index integrity verification](../RushMore-Screenshots/Q04_Index_Health_Verification.png)
+
+**Interpretation:** All seven inspected indexes were valid
+and ready at the time of verification. This supports index
+integrity and availability, but does not independently
+establish query performance improvements.
