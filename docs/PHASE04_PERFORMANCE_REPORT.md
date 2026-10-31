@@ -1,3 +1,5 @@
+> **Evidence audit — 2026-10-30: final closure BLOCKED.** Historical stage labels and completion claims below are retained as a record, not current verification. See [the evidence audit](PHASE04_EVIDENCE_AUDIT.md) for current status, source mapping, and remediation. Q01 baseline timings are supported by five retained timing captures; the other five-run series have incomplete source evidence. Reported comparison arithmetic is not independent verification of those measurements. No database execution was performed during this audit.
+
 **Phase:** 04 — PostgreSQL Administration & Performance Engineering
 **Status:** In Progress
 **Stage 01:** PostgreSQL Administration Baseline — Completed
@@ -379,23 +381,16 @@ The final report will summarize measured performance improvements, index effecti
 **Overall Phase 04 Status: In Progress.**
 
 
-### PostgreSQL Connection
-![PostgreSQL Connection](evidence/phase04/admin-1.png)
+### Retained Administration and Setup Captures
 
-### Database Size
-![Database Size](evidence/phase04/admin-2.png)
+These captions reflect the visible contents; the images do not establish all Stage 01 claims.
 
-### Table Storage
-![Table Storage](evidence/phase04/admin-3.png)
-
-### Database Privileges
-![Database Privileges](evidence/phase04/admin-4.png)
-
-### Connection and Transaction Statistics
-![Connection Statistics](evidence/phase04/admin-5.png)
-
-### Index and Maintenance Audit
-![Index and Maintenance Audit](evidence/phase04/admin-6.png)
+![VS Code Phase 04 file setup](evidence/phase04/admin-1.png)
+![Partial Q03 indexed query plan, not a database-size result](evidence/phase04/admin-2.png)
+![Database identity and PostgreSQL version](evidence/phase04/admin-3.png)
+![Database size](evidence/phase04/admin-4.png)
+![Table storage and estimated row counts](evidence/phase04/admin-5.png)
+![Database role flags](evidence/phase04/admin-6.png)
 
 #### Q01 — Baseline Execution Evidence
 
@@ -461,11 +456,7 @@ PostgreSQL's default sequential-scan plan performed better in this benchmark. Fu
 ### Evidence
 
 - `evidence/phase04/baseline-q02-run5.png`
-- `evidence/phase04/comparison-q02-run1.png`
-- `evidence/phase04/comparison-q02-run2.png`
-- `evidence/phase04/comparison-q02-run3.png`
-- `evidence/phase04/comparison-q02-run4.png`
-- `evidence/phase04/comparison-q02-run5.png`
+- **Missing:** comparison screenshots for Q02 runs 1–5. No retained source currently verifies the reported forced-index five-run median.
 
 **Stage 03 Status:** Q02 index evaluation completed.
 
@@ -635,7 +626,7 @@ No additional index is recommended for Q03 based on the current evidence.
 
 **Limitations:** The benchmark uses a single lookup value, a relatively small dataset, and a controlled planner configuration. Results should not be generalized to production without representative workload testing.
 
-**Evidence:** `docs/evidence/phase04/comparison-q03-run1.png` through `comparison-q03-run5.png`.
+**Retained evidence:** [Q03 sequential comparison run 1](evidence/phase04/comparison-q03-run1.png). **Missing:** runs 2–5; the five-run median remains a reported value pending source recovery.
 
 **Final Status:** Q03 index evaluation completed. Existing indexing strategy retained.
 
@@ -721,4 +712,4 @@ Cache effects, concurrent workloads, data growth, and write amplification were n
 - Reconcile the index inventory and document any additional storage overhead.
 - Commit and push the final review after all checks pass.
 
-**Final assessment:** The Phase 04 benchmark investigations demonstrate evidence-based PostgreSQL performance engineering. Final phase closure remains conditional on documentation, evidence, and reproducibility verification.
+**Final assessment (evidence audit, 2026-10-30): BLOCKED for phase closure.** Engineering decisions remain provisional until missing measurement sources, catalog verification, and reproducibility gaps in the linked audit are resolved.
