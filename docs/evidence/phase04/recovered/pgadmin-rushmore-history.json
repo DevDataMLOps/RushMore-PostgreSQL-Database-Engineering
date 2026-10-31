@@ -1,0 +1,429 @@
+{
+  "source": "C:\\Users\\USER\\AppData\\Roaming\\pgAdmin\\pgadmin4.db",
+  "table": "query_history",
+  "selection": "dbname = 'rushmore_db'",
+  "method": "Read-only SQLite; query_info decoded from hexadecimal JSON. No database queries executed against PostgreSQL.",
+  "limitation": "These are submitted SQL and client runtime records, NOT returned EXPLAIN plans or PostgreSQL execution times. Row timestamps are original UTC timestamps.",
+  "rows": [
+    {
+      "source_key": {
+        "srno": 15,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "2e985d58b55837c50a4dfcfc316e7e463fe502d1b0c540ca4465d5d0ecbc0a9f",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T03:55:22.756Z",
+        "query": "BEGIN;\n\nSET LOCAL enable_indexscan = off;\nSET LOCAL enable_bitmapscan = off;\nSET LOCAL enable_indexonlyscan = off;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nROLLBACK;\n\nROLLBACK;",
+        "row_affected": 0,
+        "total_time": "142 msec",
+        "message": "Query returned successfully in 142 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 16,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "355a3fc63837c2b21323cc0b25464a22d5aa4b2260bd6e18fbbec3ad75850a7f",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T03:56:31.621Z",
+        "query": "EXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    customer_id,\n    order_timestamp,\n    total_amount\nFROM orders\nWHERE customer_id = 100\nORDER BY order_timestamp DESC\nLIMIT 20;\n\n-- Q02: Sales Aggregation\n-- Pre-optimization baseline\n-- Execute five times and record execution times.\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    customer_id,\n    COUNT(*) AS total_orders,\n    SUM(total_amount) AS total_sales\nFROM orders\nGROUP BY customer_id\nORDER BY total_sales DESC\nLIMIT 20;\n\n-- Q03: Order Line-Item Lookup\n-- Stage 02: Pre-Optimization Baseline\n-- Execute five times before creating new indexes.\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM order_items\nWHERE order_id = 100;\n\nBEGIN;\n\nSET LOCAL enable_indexscan = off;\nSET LOCAL enable_bitmapscan = off;\nSET LOCAL enable_indexonlyscan = off;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nROLLBACK;",
+        "row_affected": 0,
+        "total_time": "147 msec",
+        "message": "Query returned successfully in 147 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 17,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "41c3c22d3d62a32b63f955d7f48b3df16c165ee68c62085bdb88d219ff0dd7cf",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T03:56:43.163Z",
+        "query": "-- Q01: Customer Order History\n-- Capture baseline before creating new indexes\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    customer_id,\n    order_timestamp,\n    total_amount\nFROM orders\nWHERE customer_id = 100\nORDER BY order_timestamp DESC\nLIMIT 20;\n\n-- Q02: Sales Aggregation\n-- Pre-optimization baseline\n-- Execute five times and record execution times.\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    customer_id,\n    COUNT(*) AS total_orders,\n    SUM(total_amount) AS total_sales\nFROM orders\nGROUP BY customer_id\nORDER BY total_sales DESC\nLIMIT 20;\n\n-- Q03: Order Line-Item Lookup\n-- Stage 02: Pre-Optimization Baseline\n-- Execute five times before creating new indexes.\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM order_items\nWHERE order_id = 100;\n\nBEGIN;\n\nSET LOCAL enable_indexscan = off;\nSET LOCAL enable_bitmapscan = off;\nSET LOCAL enable_indexonlyscan = off;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nROLLBACK;\n\n",
+        "row_affected": 0,
+        "total_time": "397 msec",
+        "message": "Query returned successfully in 397 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 18,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "0a4cf3f2703e9a164e5a5db7e908f7b3476c91f86f9002e4fbbc1cbfcc3974e4",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T03:59:11.994Z",
+        "query": "EXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;",
+        "row_affected": 8,
+        "total_time": "768 msec",
+        "message": "Successfully run. Total query runtime: 768 msec. 8 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 19,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "ff4c50d90ada23f596e552058df4646f2af98d75e78163dcdca3e2e798293a78",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:01:02.064Z",
+        "query": "EXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nSET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;",
+        "row_affected": 0,
+        "total_time": "1 secs 58 msec",
+        "message": "Query returned successfully in 1 secs 58 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 20,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "c22c508cedf98e09a4f8e69896ff9bc0ead5cf5c66b919fc7701a119369983b4",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:01:10.433Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;",
+        "row_affected": 0,
+        "total_time": "224 msec",
+        "message": "Query returned successfully in 224 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 1,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "7c1dce6ad40964e35593a68d4a4d537e119a393eb10f5cbd7714bdb1bf1aafa7",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:02:24.806Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;",
+        "row_affected": 0,
+        "total_time": "164 msec",
+        "message": "Query returned successfully in 164 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 2,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "cbef8f75053dff9c8f42d4ec956bdd015a30a1edf5a76b8c99152dc0c4639635",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:02:59.940Z",
+        "query": "EXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;",
+        "row_affected": 6,
+        "total_time": "747 msec",
+        "message": "Successfully run. Total query runtime: 747 msec. 6 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 3,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "73edb15e73b97b76c6cdccf72882a477d9702684c1de7da4e49351550fd91693",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:10:34.156Z",
+        "query": "RESET enable_indexscan;\nRESET enable_bitmapscan;\nRESET enable_indexonlyscan;\nRESET enable_seqscan;",
+        "row_affected": 0,
+        "total_time": "675 msec",
+        "message": "Query returned successfully in 675 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 4,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "67146bf3534ed64f990e2f6bc902669d3e18267b1b20e1c57418053aafaa2484",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:14:23.025Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;",
+        "row_affected": 0,
+        "total_time": "841 msec",
+        "message": "Query returned successfully in 841 msec.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 5,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "9256f43e6b4c7eedd0970554200a12621a8d09987cf71ce7685cb4fb35fd1d5f",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:14:56.767Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;",
+        "row_affected": 8,
+        "total_time": "658 msec",
+        "message": "Successfully run. Total query runtime: 658 msec. 8 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 6,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "6dc0b86853c2ca18ff9f0ff8d6edc4a9a95c7ade647bec1b1097bef942b0834f",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:15:57.890Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;",
+        "row_affected": 6,
+        "total_time": "240 msec",
+        "message": "Successfully run. Total query runtime: 240 msec. 6 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 7,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "163e86deb4acf699a289d4ca525d1771097b056eb538341f39551c51dbef9898",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:17:27.043Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;",
+        "row_affected": 6,
+        "total_time": "807 msec",
+        "message": "Successfully run. Total query runtime: 807 msec. 6 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 8,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "945d6eaa788a445be64593dcd5d676ff33141043aa687b43b83660155fe63602",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:18:18.449Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;",
+        "row_affected": 6,
+        "total_time": "1 secs 284 msec",
+        "message": "Successfully run. Total query runtime: 1 secs 284 msec. 6 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 9,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "5d6f16b5745856cc438dfdd163933b8e9128d4934696d59852d567694b072a11",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T04:21:05.281Z",
+        "query": "SET enable_indexscan = off;\nSET enable_bitmapscan = off;\nSET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n    order_id,\n    item_id,\n    quantity,\n    unit_price\nFROM public.order_items\nWHERE order_id = 100;",
+        "row_affected": 6,
+        "total_time": "214 msec",
+        "message": "Successfully run. Total query runtime: 214 msec. 6 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 10,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "c0c2550d2a92b877d22d31a717de52a12bc4c84c64331cc36dd2819a5672b544",
+      "record": {
+        "status": false,
+        "start_time": "2026-10-30T23:14:31.992Z",
+        "query": "SET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n\torder_id,\n\titem_id,\n\tquantity,\n\tunit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nSELECT\n    indexname,\n    indexdef\nFROM pg_indexes\nWHERE schemaname = 'public'\n  AND tablename = 'orders'\nORDER BY indexname;",
+        "row_affected": null,
+        "total_time": "847 msec",
+        "message": "Connection to the server has been lost.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 11,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "6913d42118b6b9f916f95c3b9eaf9dd7b7a7188889b4edec1b3fbb67a1567299",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T23:14:54.658Z",
+        "query": "SET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n\torder_id,\n\titem_id,\n\tquantity,\n\tunit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nSELECT\n    indexname,\n    indexdef\nFROM pg_indexes\nWHERE schemaname = 'public'\n  AND tablename = 'orders'\nORDER BY indexname;",
+        "row_affected": 4,
+        "total_time": "2 secs 343 msec",
+        "message": "Successfully run. Total query runtime: 2 secs 343 msec. 4 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 12,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "87ba2abbd8de1bf2545a32a669e98863744bcb53f4a3d86401b2b9bc55401aec",
+      "record": {
+        "status": false,
+        "start_time": "2026-10-30T23:16:15.051Z",
+        "query": "SET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n\torder_id,\n\titem_id,\n\tquantity,\n\tunit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nSELECT\n    indexname,\n    indexdef\nFROM pg_indexes\nWHERE schemaname = 'public'\n  AND tablename = 'orders'\nORDER BY indexname;\n\nSELECT\n    indexname,\n    pg_get_indexdef(indexrelid) AS index_definition\nFROM pg_indexes\nJOIN pg_class\n    ON pg_class.relname = indexname\nWHERE schemaname = 'public'\n  AND tablename = 'orders'\n  AND indexname LIKE 'idx_orders_customer_time%';",
+        "row_affected": null,
+        "total_time": "-50 msec",
+        "message": "ERROR:  column \"indexrelid\" does not exist\nLINE 23:     pg_get_indexdef(indexrelid) AS index_definition\n                             ^ \n\nSQL state: 42703\nCharacter: 353",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 13,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "3e0acc1b3cf78ef39c7693bf8f3c3cdb084ebfe24edfaf2d52290ad9ff92215a",
+      "record": {
+        "status": false,
+        "start_time": "2026-10-30T23:16:55.041Z",
+        "query": "SELECT\n    indexname,\n    pg_get_indexdef(indexrelid) AS index_definition\nFROM pg_indexes\nJOIN pg_class\n    ON pg_class.relname = indexname\nWHERE schemaname = 'public'\n  AND tablename = 'orders'\n  AND indexname LIKE 'idx_orders_customer_time%';",
+        "row_affected": null,
+        "total_time": "-40 msec",
+        "message": "ERROR:  column \"indexrelid\" does not exist\nLINE 3:     pg_get_indexdef(indexrelid) AS index_definition\n                            ^ \n\nSQL state: 42703\nCharacter: 43",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    },
+    {
+      "source_key": {
+        "srno": 14,
+        "uid": 1,
+        "sid": 2,
+        "dbname": "rushmore_db"
+      },
+      "source_query_info_sha256": "4c744577bf9be9801324768ffdd7ec0623166284fffb493859c44ceb6c2b5863",
+      "record": {
+        "status": true,
+        "start_time": "2026-10-30T23:18:36.781Z",
+        "query": "SET enable_indexonlyscan = off;\nSET enable_seqscan = on;\n\nEXPLAIN (ANALYZE, BUFFERS)\nSELECT\n\torder_id,\n\titem_id,\n\tquantity,\n\tunit_price\nFROM public.order_items\nWHERE order_id = 100;\n\nSELECT\n    indexname,\n    indexdef\nFROM pg_indexes\nWHERE schemaname = 'public'\n  AND tablename = 'orders'\nORDER BY indexname;\n\nSELECT\n    indexname,\n    indexdef AS index_definition\nFROM pg_indexes\nWHERE schemaname = 'public'\n  AND tablename = 'orders'\n  AND indexname LIKE 'idx_orders_customer_time%';",
+        "row_affected": 1,
+        "total_time": "364 msec",
+        "message": "Successfully run. Total query runtime: 364 msec. 1 rows affected.",
+        "query_source": {
+          "ICON_CSS_CLASS": "fa fa-play"
+        },
+        "is_pgadmin_query": false
+      }
+    }
+  ]
+}

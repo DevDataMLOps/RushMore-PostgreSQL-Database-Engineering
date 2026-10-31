@@ -1,0 +1,32 @@
+{
+  "repository_head_at_recovery": "a43f2e7af0a37aa078c2d068f39c109e3b75811b",
+  "recovered": [
+    {
+      "file": "admin-11.png",
+      "source": "C:\\Users\\USER\\OneDrive\\Videos\\Pictures\\Screenshots\\phase 4 evidence\\admin-11.png",
+      "sha256": "3dbb054bfd03d2f7cb521ded78da341267ac32b625a654d6fee15d1d9b4b70bc",
+      "classification": "original maintenance screenshot; not benchmark timing evidence",
+      "capture_time": "unknown; filesystem time is not proof of capture time"
+    },
+    {
+      "file": "pgadmin-rushmore-history.json",
+      "source": "C:\\Users\\USER\\AppData\\Roaming\\pgAdmin\\pgadmin4.db",
+      "sha256": "3612f381d2471bb5d23887ec51ca175210c01fc68d23473f78de378f0bebd7b9",
+      "classification": "derived read-only extraction of original local history records; no result rows"
+    }
+  ],
+  "duplicates": [
+    {
+      "source": "C:\\Users\\USER\\Downloads\\rushmore_phase03_pipeline\\comparison-sql-4.png",
+      "existing": "C:\\Users\\USER\\Downloads\\rushmore_phase03_pipeline\\rushmore_phase03\\docs\\evidence\\phase04\\comparison-q01-run4.png",
+      "sha256": "886b952b4072f3bc415bed8727e8217902447c5e8022d184966bf10c379c058c",
+      "identical": true
+    },
+    {
+      "source": "C:\\Users\\USER\\Downloads\\rushmore_phase03_pipeline\\comparison-sql-5.png",
+      "existing": "C:\\Users\\USER\\Downloads\\rushmore_phase03_pipeline\\rushmore_phase03\\docs\\evidence\\phase04\\comparison-q01-run5.png",
+      "sha256": "f21ebb07ea30043789e055908db08f318bbaf48b5e57d5823c3e03b611dd30a0",
+      "identical": true
+    }
+  ]
+}

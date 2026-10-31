@@ -1,0 +1,8 @@
+"table_name","index_name","is_valid","is_ready","size_bytes","index_size","index_definition"
+"order_items","idx_order_items_item_id",True,True,753664,"736 kB","CREATE INDEX idx_order_items_item_id ON public.order_items USING btree (item_id)"
+"order_items","idx_order_items_order_id",True,True,1499136,"1464 kB","CREATE INDEX idx_order_items_order_id ON public.order_items USING btree (order_id)"
+"order_items","order_items_pkey",True,True,2031616,"1984 kB","CREATE UNIQUE INDEX order_items_pkey ON public.order_items USING btree (order_item_id)"
+"orders","idx_orders_customer_id",True,True,524288,"512 kB","CREATE INDEX idx_orders_customer_id ON public.orders USING btree (customer_id)"
+"orders","idx_orders_customer_timestamp",True,True,958464,"936 kB","CREATE INDEX idx_orders_customer_timestamp ON public.orders USING btree (customer_id, order_timestamp DESC)"
+"orders","idx_orders_store_timestamp",True,True,1196032,"1168 kB","CREATE INDEX idx_orders_store_timestamp ON public.orders USING btree (store_id, order_timestamp)"
+"orders","orders_pkey",True,True,688128,"672 kB","CREATE UNIQUE INDEX orders_pkey ON public.orders USING btree (order_id)"

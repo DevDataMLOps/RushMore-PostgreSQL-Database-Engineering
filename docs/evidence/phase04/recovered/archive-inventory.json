@@ -1,0 +1,9 @@
+[
+  "rushmore_phase03/",
+  "rushmore_phase03/requirements.txt",
+  "rushmore_phase03/verification.sql",
+  "rushmore_phase03/README.md",
+  "rushmore_phase03/.env.example",
+  "rushmore_phase03/.gitignore",
+  "rushmore_phase03/populate.py"
+]

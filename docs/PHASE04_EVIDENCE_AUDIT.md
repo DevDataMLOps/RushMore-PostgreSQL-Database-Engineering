@@ -57,3 +57,7 @@ SET LOCAL scope is documented in [PostgreSQL SET documentation](https://www.post
 7. **Closure:** all claimed medians trace to five source measurements, all referenced artifacts exist and match captions, workload/index/settings provenance is recorded, SQL procedures match the experiments, and Git diff is reviewed. Commit/push remains a separate user decision.
 
 See `git-audit.json` in the review deliverables for HEAD, cached upstream comparison, staged diff, and fallback working-file comparison. The normal git-status command failed under this execution environment; do not claim a fully verified clean working tree from prior-chat screenshots. No remote freshness is asserted without fetch.
+
+## Original-evidence recovery follow-up
+
+Partial recovery added an original maintenance screenshot and 20 local pgAdmin history records. See [the recovery report](PHASE04_RECOVERY_REPORT.md) and its [source manifest](evidence/phase04/recovered/manifest.json). The history records SQL submissions, a RESET followed by later setting changes, and a successful catalog query; it does not retain result rows or PostgreSQL execution times. The original missing benchmark outputs and catalog-definition evidence remain unresolved. Closure remains **BLOCKED**.

@@ -1,0 +1,6 @@
+query_id,run,execution_ms,planning_ms,evidence_source
+Q01,1,1.798,1.705,pgadmin_screenshot
+Q01,2,0.075,0.117,pgadmin_screenshot
+Q01,3,0.079,0.118,pgadmin_screenshot
+Q01,4,0.089,0.134,pgadmin_screenshot
+Q01,5,0.096,0.365,pgadmin_screenshot

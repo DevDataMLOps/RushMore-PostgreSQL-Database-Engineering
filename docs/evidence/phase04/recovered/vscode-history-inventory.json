@@ -1,0 +1,182 @@
+[
+  {
+    "resource": "file:///c%3A/Users/USER/Downloads/rushmore_phase03_pipeline/rushmore_phase03/phase%204/phase04_admin_audit.sql",
+    "metadata": "C:\\Users\\USER\\AppData\\Roaming\\Code\\User\\History\\-3101cbe5\\entries.json",
+    "versions": [
+      {
+        "id": "Vx66.sql",
+        "timestamp": 1793304390503,
+        "sha256": "3bab4e76ff7c430d7a96f8c2d1dfa27309afa9392760d1aba0a9e941af6cf7df"
+      },
+      {
+        "id": "iRGr.sql",
+        "timestamp": 1793304402085,
+        "sha256": "bf6ea9665846d628f09d04e76575757bb33b454ca0c1baef97e6309cc8c3d952"
+      }
+    ]
+  },
+  {
+    "resource": "file:///c%3A/Users/USER/Downloads/rushmore_phase03_pipeline/rushmore_phase03/phase%204/phase04_baseline.sql",
+    "metadata": "C:\\Users\\USER\\AppData\\Roaming\\Code\\User\\History\\15aa84d5\\entries.json",
+    "versions": [
+      {
+        "id": "2Ey1.sql",
+        "timestamp": 1793314438130,
+        "sha256": "a696f74f2da64ec6b68e0ad2a8443b6e43e26115144cf1d14744c0acf78fc8b3"
+      },
+      {
+        "id": "VfXg.sql",
+        "timestamp": 1793317467533,
+        "sha256": "d2ee4c831de8f6a8e569ffc37346fdafe0d43c9c93a43a272fa89f7da78ba725"
+      },
+      {
+        "id": "kuBs.sql",
+        "timestamp": 1793317839769,
+        "sha256": "0f0364c0cdde21467b9197b0e3236f7495b1b76273d2283a74cc76f42251cd57"
+      },
+      {
+        "id": "RGcA.sql",
+        "timestamp": 1793317856535,
+        "sha256": "799d6a190b84124af9758d66855d4ef20d6a1e76596a59588d8b470de11aa377"
+      },
+      {
+        "id": "GPcj.sql",
+        "timestamp": 1793319760763,
+        "sha256": "8d039b7eb0829c1d61cce4811649ef636756dd6fd1f7adae36df93ab3bbfd927"
+      }
+    ]
+  },
+  {
+    "resource": "file:///c%3A/Users/USER/Downloads/rushmore_phase03_pipeline/rushmore_phase03/phase%204/phase04_indexes.sql",
+    "metadata": "C:\\Users\\USER\\AppData\\Roaming\\Code\\User\\History\\2e4dc7b0\\entries.json",
+    "versions": [
+      {
+        "id": "mqx4.sql",
+        "timestamp": 1793323238301,
+        "sha256": "b53546eafa09340e7d77a2951aefc7f7a44e8c36617ca2ba19a2bba06fafba5d"
+      }
+    ]
+  },
+  {
+    "resource": "file:///c%3A/Users/USER/Downloads/rushmore_phase03_pipeline/rushmore_phase03/phase%204/phase04_comparison.sql",
+    "metadata": "C:\\Users\\USER\\AppData\\Roaming\\Code\\User\\History\\7cc63c99\\entries.json",
+    "versions": [
+      {
+        "id": "QsNa.sql",
+        "timestamp": 1793323619562,
+        "sha256": "1e95b466ae4f2db10a8d381771592c1acd9eecd9833282c0388e9fc00bedae6e"
+      }
+    ]
+  },
+  {
+    "resource": "file:///c%3A/Users/USER/Downloads/rushmore_phase03_pipeline/rushmore_phase03/docs/PHASE04_PERFORMANCE_REPORT.md",
+    "metadata": "C:\\Users\\USER\\AppData\\Roaming\\Code\\User\\History\\9d6881b\\entries.json",
+    "versions": [
+      {
+        "id": "g8CP.md",
+        "timestamp": 1793306589416,
+        "sha256": "9a809592582a5fa5f08209abcb58f24dab9002c2f1644191ba7755d86991a433"
+      },
+      {
+        "id": "w9Dl.md",
+        "timestamp": 1793307541820,
+        "sha256": "8d9d2359044adbb129ce7f9ff7e3b0246e8bc4c53539ddea1db7dfea835aa40d"
+      },
+      {
+        "id": "ZoX8.md",
+        "timestamp": 1793307560668,
+        "sha256": "3c90cca231f449801df88da45d38e7c639a46f87192f8f8dd6ddaef372cca4f5"
+      },
+      {
+        "id": "1G95.md",
+        "timestamp": 1793307646803,
+        "sha256": "93777506c214e99bb968333058b14e289e5c172dc9a9154b0a30f880f2d81525"
+      },
+      {
+        "id": "wPCN.md",
+        "timestamp": 1793307955507,
+        "sha256": "42352f41b0826d0e30b99b0160c5a6203de81db67fa226d608c0028efb0d1128"
+      },
+      {
+        "id": "HaEa.md",
+        "timestamp": 1793308257177,
+        "sha256": "a2c8655ac6cf076e218b27c0a5122921bd0ae35e5c57921e61e5fcd5c7101987"
+      },
+      {
+        "id": "9FWX.md",
+        "timestamp": 1793308404950,
+        "sha256": "2a803851780cd2bb94679ba5240f974171f2093da16e9f90a8a5005d0c2a55cd"
+      },
+      {
+        "id": "iKiM.md",
+        "timestamp": 1793311106066,
+        "sha256": "694c6cdcecb844f6ffe0a7fc5ef528213941eac4475bac020a144a3c4bbfaf5f"
+      },
+      {
+        "id": "soDa.md",
+        "timestamp": 1793311805598,
+        "sha256": "b06d86298d2911dc31e73b372fe5c27d96b0b1bbd951290f8818d619d646b3e0"
+      },
+      {
+        "id": "juzj.md",
+        "timestamp": 1793312369432,
+        "sha256": "99ee0f4e89bec8e7f64cc4b26a44302f7f507bfa7fd0fd97ab3422c45b876dd4"
+      },
+      {
+        "id": "08Rt.md",
+        "timestamp": 1793318840546,
+        "sha256": "f119cdc8ef7e2c4011e1f93ab3e1185c9f17988f7d755f542b1a60fd0118568b"
+      },
+      {
+        "id": "bjOx.md",
+        "timestamp": 1793318863239,
+        "sha256": "a0ec917c047bc16452d95b812b4e865215979ae2919aa441852971acbcf677d6"
+      },
+      {
+        "id": "zUDB.md",
+        "timestamp": 1793320500898,
+        "sha256": "cbbb86e4ae4a4ab58194bf405d5a0aa775b93fba32bc21a01ba0e3370b300eb7"
+      },
+      {
+        "id": "qSyB.md",
+        "timestamp": 1793320519537,
+        "sha256": "b1de9d47506b0ae4dd7ae8d40391455f36cf83bd656c5f8ec4a8c839e1a435a7"
+      },
+      {
+        "id": "rAwz.md",
+        "timestamp": 1793326587674,
+        "sha256": "7228f1c7ac57c96ac68a2d66bcc4e549fb482680b34733b014c63f2443e5f3e8"
+      },
+      {
+        "id": "Vqe2.md",
+        "timestamp": 1793326622951,
+        "sha256": "2a4c97e7d1fc51511ed08541593c1d7e8e641c2b4eb938e653fa7ac47bddca30"
+      },
+      {
+        "id": "TmiO.md",
+        "timestamp": 1793328269176,
+        "sha256": "43af9a2abc6940829aece49eb4ca2e4244212bdbcf5181dd542f512c4daec7f4"
+      },
+      {
+        "id": "4EXD.md",
+        "timestamp": 1793328280331,
+        "sha256": "154060246421f1ac3f4b27fc7d287391f6d1ba8d54d52da8e681ece0584e0fc3"
+      },
+      {
+        "id": "KyuE.md",
+        "timestamp": 1793330304929,
+        "sha256": "35ff54396a82bbe442f40b7b423582cfd460564147e01bf01910f5574a6f1a2b"
+      },
+      {
+        "id": "0Tft.md",
+        "timestamp": 1793334269852,
+        "sha256": "297700a8db1e3c7da72d0e22bb90e8ca70fddd884d0c0c81d53b4a9982d53a48"
+      },
+      {
+        "id": "H1eb.md",
+        "timestamp": 1793399183144,
+        "sha256": "eb813bdd7dbf701c66a19a39e2e26384323d59cfe4b179accae641c14072d1b8"
+      }
+    ]
+  }
+]

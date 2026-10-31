@@ -1,0 +1,33 @@
+bf05c664aa54df9836da08bfc69e904283a5e7d2 docs: finalize Q03 index evaluation and engineering decision
+A	docs/evidence/phase04/comparison-q03-run1.png
+836277ae245e1da9e4f2fac29fa589ead194a92f docs: finalize Q02 index evaluation and benchmark evidence
+A	docs/evidence/phase04/baseline-q02-run5.png
+cdb89599b7c5ee9f83aec5dd1c7b69ccfd800d54 perf: document Q01 PostgreSQL index optimization benchmark
+A	docs/evidence/phase04/baseline-sql-3.png
+A	docs/evidence/phase04/comparison-q01-run4.png
+A	docs/evidence/phase04/comparison-q01-run5.png
+85a3d1024c65bd967eeb7f5bd8b0cf29924dccd6 docs: complete Q03 pre-optimization baseline evidence
+A	docs/evidence/phase04/baseline-q03-run5.png
+2d74d67fe30bc796ce094ad9ebafd04f40114bbf docs(phase04): add Q02 sales aggregation baseline evidence
+A	docs/evidence/phase04/baseline-sql-5.png
+d6cf7c94156184a99e4d9add980c8ef940d9eec9 docs: finalize Q01 baseline benchmark screenshots
+R100	docs/evidence/phase04/baseline-q01-run5.png/baseline-1.png	docs/evidence/phase04/baseline-1.png
+R100	docs/evidence/phase04/baseline-q01-run5.png/baseline-2.png	docs/evidence/phase04/baseline-2.png
+R100	docs/evidence/phase04/baseline-q01-run5.png/baseline-3.png	docs/evidence/phase04/baseline-3.png
+R100	docs/evidence/phase04/baseline-q01-run5.png/baseline-4.png	docs/evidence/phase04/baseline-4.png
+R100	docs/evidence/phase04/baseline-q01-run5.png/baseline-5.png	docs/evidence/phase04/baseline-5.png
+R100	docs/evidence/phase04/baseline-q01-run5.png/baseline-6.png	docs/evidence/phase04/baseline-6.png
+4509603f7c8ed8da66b7eb9f40e368b83906d109 docs: record Phase 04 Q01 baseline benchmark evidence
+A	docs/evidence/phase04/baseline-q01-run5.png/baseline-1.png
+A	docs/evidence/phase04/baseline-q01-run5.png/baseline-2.png
+A	docs/evidence/phase04/baseline-q01-run5.png/baseline-3.png
+A	docs/evidence/phase04/baseline-q01-run5.png/baseline-4.png
+A	docs/evidence/phase04/baseline-q01-run5.png/baseline-5.png
+A	docs/evidence/phase04/baseline-q01-run5.png/baseline-6.png
+d7e61774cb908e78d0f69b22474930000458dc1f docs: preserve Phase 04 Stage 01 PostgreSQL administration audit
+A	docs/evidence/phase04/admin-1.png
+A	docs/evidence/phase04/admin-2.png
+A	docs/evidence/phase04/admin-3.png
+A	docs/evidence/phase04/admin-4.png
+A	docs/evidence/phase04/admin-5.png
+A	docs/evidence/phase04/admin-6.png
