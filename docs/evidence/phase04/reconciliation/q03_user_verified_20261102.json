@@ -1,0 +1,17 @@
+{
+  "query": "Q03",
+  "relation": "public.order_items",
+  "operator": "Index Scan",
+  "index": "idx_order_items_order_id",
+  "condition": "order_id = 100",
+  "actual_rows": 3,
+  "index_searches": 1,
+  "shared_buffer_hits": 3,
+  "planning_ms": 0.799,
+  "execution_ms": 0.049,
+  "source": "User-supplied verified result, 2026-11-02 task instruction",
+  "execution_date": null,
+  "independently_verified_in_this_review": false,
+  "original_artifact": null,
+  "conclusion": "Index usage confirmed as reported; no comparative speedup established"
+}

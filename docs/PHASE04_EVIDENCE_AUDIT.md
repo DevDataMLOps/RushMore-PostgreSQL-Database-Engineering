@@ -61,3 +61,13 @@ See `git-audit.json` in the review deliverables for HEAD, cached upstream compar
 ## Original-evidence recovery follow-up
 
 Partial recovery added an original maintenance screenshot and 20 local pgAdmin history records. See [the recovery report](PHASE04_RECOVERY_REPORT.md) and its [source manifest](evidence/phase04/recovered/manifest.json). The history records SQL submissions, a RESET followed by later setting changes, and a successful catalog query; it does not retain result rows or PostgreSQL execution times. The original missing benchmark outputs and catalog-definition evidence remain unresolved. Closure remains **BLOCKED**.
+
+## 2026-11-02 — Documentation finalization addendum
+
+This addendum supersedes earlier current-state statements while preserving them as audit history. See the [reconciled performance report](PHASE04_PERFORMANCE_REPORT.md).
+
+- Recorded the user-confirmed Q03 index-usage result: 3 actual rows, 1 index search, 3 shared hits, planning 0.799 ms and execution 0.049 ms. No original artifact for this specific observation was found; no independent database verification or comparative speedup is claimed.
+- Recovered secondary Q01/Q02 five-run tables are now retained in repository transcript excerpts. Q02 pairing intent is established; original output/conditions remain incomplete. The separate Q01 live CSV median is 0.089 ms and lacks traceable per-run screenshot paths.
+- Index-health CSV and screenshot now exist; the older claim that all catalog evidence is missing is superseded. The CSV records seven valid/ready indexes for two tables; screenshot corroboration is partial. This is not a current live check.
+- Admin SQL and Q02 comparison procedures now exist, superseding their earlier absence. New static blockers include an unclosed transaction, session-level setting changes, and executable CREATE INDEX/ANALYZE in the index script. No SQL was changed or executed.
+- Prior performance report archived byte-for-byte as PHASE04_PERFORMANCE_REPORT_PRE_20261102.md. Historical speedup claims are not promoted into the current assessment. Documentation is reconciled; runtime reproducibility and unconditional submission readiness remain unresolved.

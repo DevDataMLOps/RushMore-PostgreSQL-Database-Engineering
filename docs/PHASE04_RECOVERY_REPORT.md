@@ -128,3 +128,23 @@ The final restore command completed with exit code `0`. Independent SQL queries 
 - Final validation date: November 2, 2026
 
 **Conclusion:** Phase 04 backup and recovery validation is complete within the tested scope. Full row-level equality and recovery-time objectives were not independently verified.
+
+## Final Recovery Evidence
+
+### Successful PostgreSQL Backup
+
+![Successful Backup](../RushMore-Screenshots/P05_Backup_Success.png)
+
+### PostgreSQL Index Scan Verification
+
+![Order Items Index Scan](../RushMore-Screenshots/Q03_Order_Items_Index_Scan.png)
+
+### Restored Database Verification
+
+![Restored Database Row Counts](../RushMore-Screenshots/Phase04_Restore_Verification.png)
+
+### Source Database Verification
+
+![Original Database Row Counts](../RushMore-Screenshots/Phase04_Source_Row_Counts.png)
+
+**Final assessment:** Backup restoration succeeded, and all six application tables matched between the original and recovered databases by row count, totaling 126,085 rows in each database.
