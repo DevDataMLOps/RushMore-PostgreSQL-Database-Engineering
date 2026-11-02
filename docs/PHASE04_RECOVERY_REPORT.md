@@ -112,3 +112,19 @@ The backup has been successfully restored into a separate Azure PostgreSQL datab
 2. Save the final recovery validation screenshot.
 3. Confirm that evidence links in the documentation resolve correctly.
 4. Commit the updated recovery report and supporting evidence to GitHub.
+
+### Final Recovery Sign-off — November 2, 2026
+
+**Status: PASSED — BACKUP RESTORE AND TABLE-COUNT PARITY VALIDATED**
+
+The RushMore PostgreSQL backup was successfully restored into the separate Azure PostgreSQL database `rushmore_recovery_final`.
+
+The final restore command completed with exit code `0`. Independent SQL queries against the original `rushmore_db` and recovered `rushmore_recovery_final` confirmed matching row counts across all six application tables.
+
+- Tables verified: 6 of 6
+- Original database rows: 126,085
+- Recovered database rows: 126,085
+- Table-count discrepancies: 0
+- Final validation date: November 2, 2026
+
+**Conclusion:** Phase 04 backup and recovery validation is complete within the tested scope. Full row-level equality and recovery-time objectives were not independently verified.
