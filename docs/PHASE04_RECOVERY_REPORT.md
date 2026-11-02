@@ -35,3 +35,80 @@
 If the original benchmark screenshots were attached to an earlier chat, those original attachments or a chat export are the next useful source. The currently referenced chat preview supplies only late audit/commit screenshots. An older benchmark chat link or the original exports can close gaps without rerunning. Also consider a known backup of the screenshot folder if one exists. Do not relabel newly captured results as historical evidence.
 
 Manifest checksums identify the preserved files. No phase sign-off status has been upgraded.
+
+## 2026-11-02 — Documentation finalization addendum
+
+This addendum supersedes earlier current-state statements while preserving them as audit history. See the [reconciled performance report](PHASE04_PERFORMANCE_REPORT.md).
+
+- Recorded the user-confirmed Q03 index-usage result: 3 actual rows, 1 index search, 3 shared hits, planning 0.799 ms and execution 0.049 ms. No original artifact for this specific observation was found; no independent database verification or comparative speedup is claimed.
+- Recovered secondary Q01/Q02 five-run tables are now retained in repository transcript excerpts. Q02 pairing intent is established; original output/conditions remain incomplete. The separate Q01 live CSV median is 0.089 ms and lacks traceable per-run screenshot paths.
+- Index-health CSV and screenshot now exist; the older claim that all catalog evidence is missing is superseded. The CSV records seven valid/ready indexes for two tables; screenshot corroboration is partial. This is not a current live check.
+- Admin SQL and Q02 comparison procedures now exist, superseding their earlier absence. New static blockers include an unclosed transaction, session-level setting changes, and executable CREATE INDEX/ANALYZE in the index script. No SQL was changed or executed.
+- Prior performance report archived byte-for-byte as PHASE04_PERFORMANCE_REPORT_PRE_20261102.md. Historical speedup claims are not promoted into the current assessment. Documentation is reconciled; runtime reproducibility and unconditional submission readiness remain unresolved.
+
+## Final Backup and Recovery Validation — November 2, 2026
+
+### Recovery Objective
+
+Verify that the RushMore PostgreSQL database can be recovered from a custom-format backup into a separate Azure PostgreSQL database without modifying the original application database.
+
+### Recovery Environment
+
+| Component | Configuration |
+|---|---|
+| Platform | Azure Database for PostgreSQL |
+| PostgreSQL server | PostgreSQL 18.6 |
+| Backup utility | pg_dump |
+| Restore utility | pg_restore 18.3 |
+| Source database | `rushmore_db` |
+| Recovery database | `rushmore_recovery_final` |
+| Backup artifact | `rushmore_app_complete.backup` |
+| Validation date | November 2, 2026 |
+
+### Recovery Execution Results
+
+The initial restoration attempts encountered errors. Subsequent troubleshooting included verifying database connectivity, permissions, backup contents, and restore configuration.
+
+The final command-line restoration completed with exit code `0`.
+
+The restore output included successful index creation and table alteration operations, providing evidence that schema objects and constraints were processed.
+
+**Final restore command status: PASSED**
+
+### Restored Data Verification
+
+A SQL validation query was executed against `rushmore_recovery_final`.
+
+| Table | Restored row count |
+|---|---:|
+| customers | 6,000 |
+| ingredients | 50 |
+| menu_items | 30 |
+| order_items | 90,000 |
+| orders | 30,000 |
+| stores | 5 |
+| **Total** | **126,085** |
+
+The query returned all six application tables successfully, with a reported execution time of approximately 375 milliseconds.
+
+**Restored table population check: PASSED**
+
+### Validation Limitations
+
+- The restored row counts have been verified.
+- Exact row-count equality with the source database remains to be explicitly confirmed.
+- Full row-level checksums, application-level functional testing, and recovery-time objective measurements were not established by this validation.
+- The successful command-line restore does not establish that the earlier pgAdmin restore attempts succeeded.
+
+### Recovery Assessment
+
+The backup has been successfully restored into a separate Azure PostgreSQL database, and all six expected application tables contain data.
+
+**Recovery status: RESTORE VERIFIED — SOURCE PARITY CHECK PENDING**
+
+### Remaining Sign-off Actions
+
+1. Compare source and recovery database row counts.
+2. Save the final recovery validation screenshot.
+3. Confirm that evidence links in the documentation resolve correctly.
+4. Commit the updated recovery report and supporting evidence to GitHub.
