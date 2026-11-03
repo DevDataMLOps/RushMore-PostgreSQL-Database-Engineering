@@ -1,0 +1,52 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="Page-1" id="IDLuqykjrZBViklhukYv">
+    <mxGraphModel dx="774" dy="1489" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-24" edge="1" parent="1" source="0vTKGt9XlDtsXgZEeJQX-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="0vTKGt9XlDtsXgZEeJQX-7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-4" parent="1" style="rounded=0;whiteSpace=wrap;html=1;direction=west;fontStyle=3" value="&lt;p&gt;1. Synthetic Data Generation&lt;/p&gt;&lt;p&gt;Python · Faker · Synthetic records&lt;/p&gt;&lt;p&gt;Customers | Stores | Menu Items&lt;/p&gt;&lt;p&gt;Ingredients | Orders | Order Items&lt;/p&gt;" vertex="1">
+          <mxGeometry height="170" width="175" x="310" y="-80" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-7" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fontStyle=3" value="&lt;p&gt;2. Data Loading Pipeline&lt;/p&gt;&lt;p&gt;Python · PostgreSQL transactions · Validation&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="175" x="310" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-21" edge="1" parent="1" source="0vTKGt9XlDtsXgZEeJQX-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;defaultLabelBackgroundColor=page;entryX=0.507;entryY=0.144;entryDx=0;entryDy=0;entryPerimeter=0;" target="0vTKGt9XlDtsXgZEeJQX-15">
+          <mxGeometry relative="1" x="-0.0412" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-8" parent="1" style="shape=ext;double=1;rounded=0;whiteSpace=wrap;html=1;fontStyle=3" value="&#xa;&lt;div&gt;&lt;p&gt;&lt;span&gt;&lt;span&gt;3. &lt;/span&gt;&lt;span&gt;Azure &lt;/span&gt;&lt;span&gt;Database &lt;/span&gt;&lt;span&gt;for &lt;/span&gt;&lt;span&gt;PostgreSQL&lt;/span&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span&gt;rushmore_db &lt;/span&gt;&lt;span&gt;· &lt;/span&gt;&lt;span&gt;Six &lt;/span&gt;&lt;span&gt;relational &lt;/span&gt;&lt;span&gt;tables&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;p&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&#xa;&#xa;" vertex="1">
+          <mxGeometry height="90" width="175" x="322.5" y="290" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-22" edge="1" parent="1" source="0vTKGt9XlDtsXgZEeJQX-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="0vTKGt9XlDtsXgZEeJQX-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-13" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=3" value="&lt;p&gt;4. Performance Optimization&lt;/p&gt;&lt;p&gt;Indexes · EXPLAIN ANALYZE · Audits&lt;/p&gt;" vertex="1">
+          <mxGeometry height="70" width="192.5" x="160" y="470" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-23" edge="1" parent="1" source="0vTKGt9XlDtsXgZEeJQX-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="0vTKGt9XlDtsXgZEeJQX-15">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=3" value="&lt;p&gt;5. Backup &amp;amp; Recovery&lt;/p&gt;&lt;p&gt;pg_dump · pg_restore · Row-count checks&lt;/p&gt;" vertex="1">
+          <mxGeometry height="80" width="210" x="480" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=3" value="&lt;p&gt;6. Validation &amp;amp; Evidence&lt;/p&gt;&lt;p&gt;SQL reports · Screenshots · GitHub documentation&lt;/p&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="290" y="610" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-17" edge="1" parent="1" source="0vTKGt9XlDtsXgZEeJQX-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;defaultLabelBackgroundColor=page;" target="0vTKGt9XlDtsXgZEeJQX-8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-19" edge="1" parent="1" source="0vTKGt9XlDtsXgZEeJQX-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0.452;entryY=0.067;entryDx=0;entryDy=0;entryPerimeter=0;defaultLabelBackgroundColor=page;" target="0vTKGt9XlDtsXgZEeJQX-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-20" edge="1" parent="1" source="0vTKGt9XlDtsXgZEeJQX-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.513;entryY=0.114;entryDx=0;entryDy=0;entryPerimeter=0;defaultLabelBackgroundColor=page;" target="0vTKGt9XlDtsXgZEeJQX-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="0vTKGt9XlDtsXgZEeJQX-25" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontStyle=1;fontSize=18;" value="RushMore Pizzeria — PostgreSQL Cloud Data Architecture" vertex="1">
+          <mxGeometry height="90" width="550" x="130" y="-170" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
